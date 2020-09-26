@@ -1,7 +1,8 @@
 import React from 'react'
 import TableModules from './table.module.css'
+import { withRouter } from 'react-router-dom';
 
-const Table = ({users}) =>{
+const Table = ({users,history}) =>{
     let i = 0;
     return (
     <section>
@@ -24,24 +25,25 @@ const Table = ({users}) =>{
         <div className ={TableModules.tbl_content}>
             <table cellPadding="0" cellSpacing="0" border="0">
                 <tbody>
-                    {/* <tr>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-
-                    </tr> */}
                     {
-                        users.map(value => {
-                        console.log("Table -> value", value)
+                        users.map(({
+                            id,
+                            firstName,
+                            lastName,
+                            email,
+                            phone,
+                            address,
+                        } )=> {
                             return(
-                                <tr key={i++}>
-                                <td>{value.firstName}</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
+                                <tr key={i++} onClick = {() => {history.push(`/users/${id}`)}}>
+                                <td>{id}</td>
+                                <td>{firstName}</td>
+                                <td>{lastName}</td>
+                                <td>{email}</td>
+                                <td>{phone}</td>
+                                <td>{address.city}</td>
+                                <td>{address.streetAddress}</td>
+                                <td>{address.state}</td>
                             </tr>
                             )
                         })
@@ -53,4 +55,4 @@ const Table = ({users}) =>{
     )
 }
 
-export default Table
+export default withRouter (Table)

@@ -14,14 +14,20 @@ class List extends Component {
     }
 
     componentDidMount() {
+        let i = 1;
         this.setState({
             loading: true
         })
-        fetch(`${API_URL}`)
+        fetch(`${API_URL()}`)
             .then(resp => {
                 return resp.json()
             })
             .then(data => {
+              data = data.map(item => {
+                    item.id = i;
+                    i++;
+                    return item
+                })
                 this.setState({
                     users: data,
                     loading: false
