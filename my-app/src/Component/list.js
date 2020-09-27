@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { API_URL } from '../config'
 import Loading from './Loading/loading'
+import Pagination from './Pagination/pagination';
 import Table from './Table/table'
 
 class List extends Component {
@@ -9,7 +10,10 @@ class List extends Component {
         this.state = {
             loading: false,
             users: [],
-            error: null
+            error: null,
+            page:1,
+            totalPages: 50,
+            perPage: 20,
         }
     }
 
@@ -29,8 +33,13 @@ class List extends Component {
             })
     }
 
+    handlePaginationClick(direction) {
+        let nextPage = this.state.page;
+        nextPage = direction === 'next' ? nextPage + 1 : nextPage - 1;
+    }
+
     render(){
-        const {loading,users,error} = this.state
+        const {loading,users,error,page,totalPages} = this.state
         if(loading){
             return <Loading/>
         }
@@ -39,6 +48,9 @@ class List extends Component {
                 <Table 
                     users={users}
                 />
+                <Pagination 
+                page = {page}
+                totalPages = {totalPages}/>
             </div>
         )
     }

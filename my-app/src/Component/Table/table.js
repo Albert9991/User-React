@@ -33,15 +33,30 @@ const Table = ({users}) =>{
 
                     </tr> */}
                     {
-                        users.map(value => {
-                        console.log("Table -> value", value)
+                        users.map(({
+                            id,
+                            firstName,
+                            lastName,
+                            email,
+                            phone,
+                            address,
+                            address:city,
+                            address:streetAdress,
+                            address:state,
+                        }
+                            
+                        )=> {
+
                             return(
                                 <tr key={i++}>
-                                <td>{value.firstName}</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
+                                <td>{id}</td>
+                                <td>{firstName}</td>
+                                <td>{lastName}</td>
+                                <td>{email}</td>
+                                <td>{phone}</td>
+                                <td>{address.city}</td>
+                                <td>{address.streetAddress}</td>
+                                <td>{address.state}</td>
                             </tr>
                             )
                         })
