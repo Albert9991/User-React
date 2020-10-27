@@ -1,7 +1,8 @@
 import React from 'react'
 import TableModules from './table.module.css'
+import { withRouter } from 'react-router-dom';
 
-const Table = ({users}) =>{
+const Table = ({users,history}) =>{
     let i = 0;
     return (
     <section>
@@ -24,14 +25,6 @@ const Table = ({users}) =>{
         <div className ={TableModules.tbl_content}>
             <table cellPadding="0" cellSpacing="0" border="0">
                 <tbody>
-                    {/* <tr>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-                        <td>5</td>
-
-                    </tr> */}
                     {
                         users.map(({
                             id,
@@ -40,15 +33,9 @@ const Table = ({users}) =>{
                             email,
                             phone,
                             address,
-                            address:city,
-                            address:streetAdress,
-                            address:state,
-                        }
-                            
-                        )=> {
-
+                        } )=> {
                             return(
-                                <tr key={i++}>
+                                <tr key={i++} onClick = {() => {history.push(`/users/${id}`)}}>
                                 <td>{id}</td>
                                 <td>{firstName}</td>
                                 <td>{lastName}</td>
@@ -68,4 +55,4 @@ const Table = ({users}) =>{
     )
 }
 
-export default Table
+export default withRouter (Table)

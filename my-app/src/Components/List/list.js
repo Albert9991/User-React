@@ -3,8 +3,9 @@ import { API_URL } from '../../config';
 import Search from '../Search/search';
 import Table from '../Table/table';
 import Pagination from './pagination'
-import Loading from '../Component/Loading/loading';
+import Loading from '../Loading/loading';
 import NotFound from '../NotFound/notFound';
+
 class List extends Component {
     constructor(prop) {
         super();
@@ -105,6 +106,7 @@ class List extends Component {
             })
         }
     }
+
     paginationClick(prop) {
         let nextPage = this.state.page;
         nextPage = prop === 'next' ? nextPage + 1 : nextPage - 1;
@@ -115,6 +117,7 @@ class List extends Component {
             page: nextPage
         })
     }
+
     render() {
         const { loading, users, downUp, history, page, totalPages, allUsers,error } = this.state;
         if(error){
@@ -147,4 +150,5 @@ class List extends Component {
         )
     }
 }
+
 export default List;

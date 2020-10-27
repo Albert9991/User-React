@@ -1,0 +1,32 @@
+.container {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    font-size: 15px;
+    width: 150px;
+    margin: 0 auto;
+}
+.btn {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+  
+.btn:hover {
+    background-position: right center;
+}
+
+.btn_4 {
+    background-image: linear-gradient(to right, #2936f1 0%,#1ddbec 50%, #92bbfc 100%);
+    border: none;   
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import paginationModule from './pagination.module.css';
+
 const Pagination = (props) => {
     const { paginationClick, page, totalPages } = props
     return (
@@ -20,9 +21,11 @@ const Pagination = (props) => {
                 className={paginationModule.Pagination_button}
                 onClick={() => paginationClick('next')}
                 disabled={page === totalPages}
+
             >
                 &rarr;
             </button>
+
         </div>
     )
 }
